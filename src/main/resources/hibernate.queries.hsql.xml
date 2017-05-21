@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-maping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <sql-query name="HQL_GET_TABLE_NAMES">
+        <![CDATA[SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_SCHEMA = 'PUBLIC']]>
+    </sql-query>
+    <sql-query name="HQL_GET_USER_NAMES">
+        <![CDATA[SELECT user_name FROM information_schema.system_users]]>
+    </sql-query>
+</hibernate-mapping>
+
+

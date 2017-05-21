@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-maping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <sql-query name="HQL_GET_TABLE_NAMES">
+        <![CDATA[SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_SCHEMA = :dbname]]>
+    </sql-query>
+    <sql-query name="HQL_GET_DB_SIZE">
+        <![CDATA[SELECT ROUND(SUM(data_length + index_length)/1024/1024/1024, 1) FROM information_schema.tables WHERE TABLE_SCHEMA = :dbname]]>
+    </sql-query>
+    <sql-query name="HQL_GET_USER_NAMES">
+        <![CDATA[SELECT user FROM mysql.user GROUP BY user]]>
+    </sql-query>
+    <sql-query name="HQL_GET_DB_TIME_CREATE">
+        <![CDATA[SELECT create_time FROM mysql.user GROUP BY user]]>
+    </sql-query>
+    <sql-query name="HQL_GET_DB_VERSION">
+        <![CDATA[SELECT VERSION()]]>
+    </sql-query>
+</hibernate-mapping>
+
+
