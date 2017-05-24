@@ -5,30 +5,65 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "test_entity")
+@Table(name = "l2_test_entity")
 public class TestEntity implements Serializable {
 
-    private long id;
-    private String name;
-    private String description;
-    private Date dateCreated;
-    private boolean isCheck;
-    private TestEntityEmbeded embeded1;
-    private TestEntityEmbeded embeded2;
-    
-    public TestEntity() {}
-    
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    
+    @Column(name = "name")
+    private String name;
+    
+    @Column(name = "description")
+    private String description;
+    
+    @Column(name = "date_created")
+    @Temporal(javax.persistence.TemporalType.DATE)    
+    private Date dateCreated;
+    
+    @Column(name = "is_check")    
+    private boolean isCheck;
+    
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(
+                name = "stringField", 
+                column = @Column(name = "string_field_1")
+        ),
+        @AttributeOverride(
+                name = "intField",
+                column = @Column(name = "int_field_1")
+        )
+    })    
+    private TestEntityEmbeded embeded1;
+    
+    @Embedded
+    @AttributeOverrides({
+        @AttributeOverride(
+                name = "stringField", 
+                column = @Column(name = "string_field_2")
+        ),
+        @AttributeOverride(
+                name = "intField", 
+                column = @Column(name = "int_field_2")
+        )
+    })    
+    private TestEntityEmbeded embeded2;
+ 
+    
+    
+    
+    public TestEntity() {}  
+
     public long getId() {
         return id;
     }   
     public void setId(long id) {
         this.id = id;
     }
-    
-    @Column
+       
     public String getName() {
         return name;
     }
@@ -36,7 +71,6 @@ public class TestEntity implements Serializable {
         this.name = name;
     }
     
-    @Column
     public String getDescription() {
         return description;
     }
@@ -44,8 +78,6 @@ public class TestEntity implements Serializable {
         this.description = description;
     }
     
-    @Column
-    @Temporal(javax.persistence.TemporalType.DATE)
     public Date getDateCreated() {
         return dateCreated;
     }
@@ -53,7 +85,6 @@ public class TestEntity implements Serializable {
         this.dateCreated = dateCreated;
     }
     
-    @Column
     public boolean getIsCheck() {
         return isCheck;
     }
@@ -61,11 +92,6 @@ public class TestEntity implements Serializable {
         this.isCheck = isCheck;
     }
     
-    @Embedded
-    @AttributeOverrides({
-        @AttributeOverride(name = "stringField", column = @Column(name = "stringField1")),
-        @AttributeOverride(name = "intField", column = @Column(name = "intField1"))
-    })
     public TestEntityEmbeded getEmbeded1() {
         return embeded1;
     }
@@ -73,15 +99,11 @@ public class TestEntity implements Serializable {
         this.embeded1 = embeded1;
     }
     
-    @Embedded
-    @AttributeOverrides({
-        @AttributeOverride(name = "stringField", column = @Column(name = "stringField2")),
-        @AttributeOverride(name = "intField", column = @Column(name = "intField2"))
-    })
     public TestEntityEmbeded getEmbeded2() {
         return embeded2;
     }
     public void setEmbeded2(TestEntityEmbeded embeded2) {
         this.embeded2 = embeded1;
     }
+
 }

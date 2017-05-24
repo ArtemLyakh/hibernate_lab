@@ -12,25 +12,10 @@ import java.util.List;
 import javax.persistence.criteria.CriteriaQuery;
 import mylab.dataproviders.*;
 import mylab.entities.*;
-import mylab.repos.*;
 import org.hibernate.Session;
 
 public class prog {
     public static void main(String[] args) {
-//        PlatformRepo pr = new PlatformRepo(MysqlDataProvider.getInstance());
-//        GameRepo gr = new GameRepo(MysqlDataProvider.getInstance());
-//        UserRepo ur = new UserRepo(MysqlDataProvider.getInstance());
-//        RegistredUserRepo rur = new RegistredUserRepo(MysqlDataProvider.getInstance());
-//        
-        
-//        pr.getList().forEach(el -> System.out.println(el.getName()));
-//        gr.getList().forEach(el -> System.out.println(el.getName()));      
-//        ur.getList().forEach(el -> System.out.println(el.getName()));
-//        rur.getList().forEach(el -> System.out.println(el.getName()));
-        
-
-        
-//        Game game = gr.getList().get(0);
         
         BaseSingleTable bst = new BaseSingleTable();
         bst.setBaseField("baseSinglTable");

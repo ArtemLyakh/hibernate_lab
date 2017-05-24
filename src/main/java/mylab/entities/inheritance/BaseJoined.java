@@ -5,32 +5,33 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "base_joined")
+@Table(name = "l3_base_joined")
 public class BaseJoined implements Serializable {
-    private long id;
-    private String baseField;
-    
-    public BaseJoined() {}
     
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)   
+    private long id;
+    
+    @Column(name = "base_field", nullable = true)
+    private String baseField;
+  
+    
+    
+    public BaseJoined() {}
+    
     public long getId() {
         return id;
     }
-    
     public void setId(long id) {
         this.id = id;
     }
     
-    @Column(nullable = true)
     public String getBaseField() {
         return baseField;
     }
- 
     public void setBaseField(String baseField) {
         this.baseField = baseField;
-    }   
-    
+    }  
     
 }
