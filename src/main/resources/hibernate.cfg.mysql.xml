@@ -10,20 +10,20 @@
     <property name="show_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="hibernate.connection.datebase_name">hb</property>
+
     
-<!--    <mapping class="mylab.entities.Book"/>
-    <mapping class="mylab.entities.Platform"/>
-    <mapping class="mylab.entities.Game"/>
-    <mapping class="mylab.entities.User"/>
-    <mapping class="mylab.entities.RegistredUser"/>-->
-    
+            
     <mapping class="mylab.entities.TestEntity" />
-    
+  
     <mapping class="mylab.entities.inheritance.BaseSingleTable"/>
     <mapping class="mylab.entities.inheritance.ChildSingleTable"/>
     <mapping class="mylab.entities.inheritance.BaseJoined"/>
     <mapping class="mylab.entities.inheritance.ChildJoined"/>
     <mapping class="mylab.entities.inheritance.BaseTablePerClass"/>
     <mapping class="mylab.entities.inheritance.ChildTablePerClass"/>
+ 
+    <mapping class="mylab.entities.collections.Parent" />
+    
+    
   </session-factory>
 </hibernate-configuration>
