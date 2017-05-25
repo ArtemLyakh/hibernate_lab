@@ -2,11 +2,66 @@ package mylab.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "l2_test_entity")
 public class TestEntity implements Serializable {
+
+    @Override
+    public String toString() {
+        return "TestEntity{" + "id=" + id + ", name=" + name + ", description=" + description + ", dateCreated=" + dateCreated + ", isCheck=" + isCheck + ", embeded1=" + embeded1 + ", embeded2=" + embeded2 + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.description);
+        hash = 97 * hash + Objects.hashCode(this.dateCreated);
+        hash = 97 * hash + (this.isCheck ? 1 : 0);
+        hash = 97 * hash + Objects.hashCode(this.embeded1);
+        hash = 97 * hash + Objects.hashCode(this.embeded2);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TestEntity other = (TestEntity) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.isCheck != other.isCheck) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.dateCreated.getTime(), other.dateCreated.getTime())) {
+            return false;
+        }
+        if (!Objects.equals(this.embeded1, other.embeded1)) {
+            return false;
+        }
+        if (!Objects.equals(this.embeded2, other.embeded2)) {
+            return false;
+        }
+        return true;
+    }
 
     @Id
     @Column(name = "id")
@@ -20,7 +75,7 @@ public class TestEntity implements Serializable {
     private String description;
     
     @Column(name = "date_created")
-    @Temporal(javax.persistence.TemporalType.DATE)    
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)    
     private Date dateCreated;
     
     @Column(name = "is_check")    
