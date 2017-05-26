@@ -5,7 +5,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Embeddable
-public class Child implements Serializable {
+public class InnerEntity implements Serializable {
     
     @Column(name = "string_field", nullable = true)
     private String stringField;
@@ -15,7 +15,7 @@ public class Child implements Serializable {
     
     
     
-    public Child() { }
+    public InnerEntity() { }
 
     public String getStringField() {
         return stringField;
@@ -50,7 +50,7 @@ public class Child implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Child other = (Child) obj;
+        final InnerEntity other = (InnerEntity) obj;
         if (this.intField != other.intField) {
             return false;
         }

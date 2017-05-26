@@ -22,7 +22,7 @@
     <mapping class="mylab.entities.inheritance.BaseTablePerClass"/>
     <mapping class="mylab.entities.inheritance.ChildTablePerClass"/>
  
-    <mapping class="mylab.entities.collections.Parent" />
+    <mapping class="mylab.entities.collections.OuterEntity" />
     
     
   </session-factory>
