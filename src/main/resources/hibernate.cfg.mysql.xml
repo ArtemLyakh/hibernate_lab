@@ -7,23 +7,28 @@
     <property name="connection.url">jdbc:mysql://localhost:3306/hb</property>
     <property name="connection.username">hb</property>
     <property name="connection.password">123321</property>
-    <property name="show_sql">true</property>
+<property name="show_sql">true</property>
+<property name="format_sql">true</property>
+<property name="use_sql_comments">true</property>
     <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="hibernate.connection.datebase_name">hb</property>
-
-    
-            
-    <mapping class="mylab.entities.TestEntity" />
-  
+    <mapping class="mylab.entities.TestEntity"/>
     <mapping class="mylab.entities.inheritance.BaseSingleTable"/>
     <mapping class="mylab.entities.inheritance.ChildSingleTable"/>
     <mapping class="mylab.entities.inheritance.BaseJoined"/>
     <mapping class="mylab.entities.inheritance.ChildJoined"/>
     <mapping class="mylab.entities.inheritance.BaseTablePerClass"/>
     <mapping class="mylab.entities.inheritance.ChildTablePerClass"/>
- 
-    <mapping class="mylab.entities.collections.OuterEntity" />
-    
-    
+    <mapping class="mylab.entities.collections.OuterEntity"/>
+    <mapping class="mylab.entities.relations.onetomany.oneway.Game"/>
+    <mapping class="mylab.entities.relations.onetomany.oneway.Platform"/>
+    <mapping class="mylab.entities.relations.onetomany.twoway.Game"/>
+    <mapping class="mylab.entities.relations.onetomany.twoway.Platform"/>
+    <mapping class="mylab.entities.relations.onotoone.sharedkey.Game"/>
+    <mapping class="mylab.entities.relations.onotoone.sharedkey.Tournament"/>
+    <mapping class="mylab.entities.relations.onotoone.foreignkey.Game"/>
+    <mapping class="mylab.entities.relations.onotoone.foreignkey.Tournament"/>
+    <mapping class="mylab.entities.relations.manytomany.Game"/>
+    <mapping class="mylab.entities.relations.manytomany.Tournament"/>
   </session-factory>
 </hibernate-configuration>
