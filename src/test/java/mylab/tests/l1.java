@@ -1,5 +1,6 @@
 package mylab.tests;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mylab.dataproviders.*;
@@ -43,22 +44,30 @@ public class l1 {
 
 
     @Test
-    public void GetTables() {
-        LOG.log(Level.INFO, "Database table list:\n{0}", String.join("\n", dataProvider.getTableNames()));
+    public void GetTables() {      
+        List<String> list = dataProvider.getTableNames();
+        LOG.log(Level.INFO, "Database table list:\n{0}", String.join("\n", list));
+        assertTrue(list.size() > 0);
     }
     
     @Test
     public void GetSize() {
-        LOG.log(Level.INFO, "Database size:\n{0}", dataProvider.getDbSize().toString());
+        Double size = dataProvider.getDbSize();
+        LOG.log(Level.INFO, "Database size:\n{0}", size.toString());
+        assertNotNull(size);
     }
     
     @Test
     public void GetUsers() {
-        LOG.log(Level.INFO, "Database user list:\n{0}", String.join("\n", dataProvider.getUserNames()));
+        List<String> list = dataProvider.getUserNames();
+        LOG.log(Level.INFO, "Database user list:\n{0}", String.join("\n", list));
+        assertTrue(list.size() > 0);
     }
     
     @Test
     public void GetVersion () {
-        LOG.log(Level.INFO, "Database version:\n{0}", dataProvider.getVersion());
+        String version = dataProvider.getVersion();
+        LOG.log(Level.INFO, "Database version:\n{0}", version);
+        assertNotNull(version);
     }
 }
